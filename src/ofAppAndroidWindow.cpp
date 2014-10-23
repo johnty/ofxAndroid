@@ -582,7 +582,8 @@ Java_cc_openframeworks_OFAndroid_onCustom() {
 void
 Java_cc_openframeworks_OFAndroid_passArray(JNIEnv *env, jclass thiz, jbyteArray a, jboolean *iscopy) {
     if (androidApp) {
-    	androidApp->onArray(NULL, 0);
+    	jsize len = env->GetArrayLength(a);
+    	androidApp->onArray(NULL, len);
     }
 }
 
