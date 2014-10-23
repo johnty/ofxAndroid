@@ -1,0 +1,43 @@
+*.DS_Store
+*.pydevproject
+.metadata
+.gradle
+bin/
+!bin/data
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+*.apk
+*.jar
+local.properties
+.settings/
+.loadpath
+
+# android autogen resource bundle
+**/raw/
+
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+
+#NDK stuff
+*.o
+*.so
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+
+# sbteclipse plugin 
+.target
+
+# TeXlipse plugin
+.texlipse
