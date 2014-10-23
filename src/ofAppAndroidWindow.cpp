@@ -583,7 +583,12 @@ void
 Java_cc_openframeworks_OFAndroid_passArray(JNIEnv *env, jclass thiz, jbyteArray a, jboolean *iscopy) {
     if (androidApp) {
     	jsize len = env->GetArrayLength(a);
-    	androidApp->onArray(NULL, len);
+    	jbyte* arr = env->GetByteArrayElements(a, NULL);
+    	char* data = new char[len];
+    	for (int i=0; i<len; i++) {
+    		data[i] = arr[i];
+    	}
+    	androidApp->onArray(data, len);
     }
 }
 
