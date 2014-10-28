@@ -582,6 +582,8 @@ Java_cc_openframeworks_OFAndroid_onCustom() {
 void
 Java_cc_openframeworks_OFAndroid_passArray(JNIEnv *env, jclass thiz, jbyteArray a, jboolean *iscopy) {
     if (androidApp) {
+    	//method 1: explicit call
+    	/*
     	jsize len = env->GetArrayLength(a);
     	jbyte* arr = env->GetByteArrayElements(a, NULL);
     	char* data = new char[len];
@@ -589,6 +591,17 @@ Java_cc_openframeworks_OFAndroid_passArray(JNIEnv *env, jclass thiz, jbyteArray 
     		data[i] = arr[i];
     	}
     	androidApp->onArray(data, len);
+    	env->ReleaseByteArrayElements(a, arr, JNI_ABORT);//note: this is important!
+    	delete data;
+    	//end method 1
+    	*/
+
+    	//method 2: with less JNI calls:
+    	jsize len = env->GetArrayLength(a);
+    	jbyte* data = new jbyte[len];
+    	env->GetByteArrayRegion(a, 0, len, data);
+    	androidApp->onArray((char*)data, len);
+    	delete data;
     }
 }
 
