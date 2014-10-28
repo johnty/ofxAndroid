@@ -596,12 +596,15 @@ Java_cc_openframeworks_OFAndroid_passArray(JNIEnv *env, jclass thiz, jbyteArray 
     	//end method 1
     	*/
 
+
+
     	//method 2: with less JNI calls:
     	jsize len = env->GetArrayLength(a);
     	jbyte* data = new jbyte[len];
     	env->GetByteArrayRegion(a, 0, len, data);
     	androidApp->onArray((char*)data, len);
     	delete data;
+
     }
 }
 
