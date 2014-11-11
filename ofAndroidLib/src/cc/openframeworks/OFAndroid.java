@@ -239,6 +239,7 @@ public class OFAndroid {
 		    					fileName = resName.substring(resName.lastIndexOf("/"));
 		    					Log.i("OF","checking " + fileName);
 		    					if(fileName.equals("/" + app_name + "resources.zip")){
+		    						Log.v("OFAndroid", "res file match!");
 		    						
 			    					from = ofActivity.getResources().openRawResource(fileId);
 									try{
